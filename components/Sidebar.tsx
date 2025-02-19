@@ -1,7 +1,4 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -9,21 +6,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
-import { 
-  LayoutDashboard, 
-  Users, 
-  Calendar,
-  Menu,
-  X,
-  ClipboardList,
-  MapPin,
-  Target,
-  FileText,
-  ShoppingCart,
-  CreditCard,
+import {
   Building,
+  Calendar,
+  ClipboardList,
+  CreditCard,
+  FileText,
+  LayoutDashboard,
+  MapPin,
+  Menu,
+  ShoppingCart,
+  Target,
+  Users,
+  X,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export function Sidebar() {
   const pathname = usePathname();

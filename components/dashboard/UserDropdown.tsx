@@ -3,12 +3,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, LogOut, Settings, User } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { ChevronDown, LogOut } from "lucide-react";
 
 interface UserDropdownProps {
   email: string;
@@ -16,7 +14,6 @@ interface UserDropdownProps {
 
 export function UserDropdown({ email }: UserDropdownProps) {
   const { signOut } = useAuth();
-  const router = useRouter();
 
   const handleLogout = async () => {
     try {

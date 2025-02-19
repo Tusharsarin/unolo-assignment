@@ -1,11 +1,4 @@
 "use client";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { MapPin, MessageSquare, Bell, ChevronDown } from "lucide-react";
-import { useAuth } from "@/context/AuthContext";
-import { UserDropdown } from "./UserDropdown";
-import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -13,21 +6,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useAuth } from "@/context/AuthContext";
+import { cn } from "@/lib/utils";
+import { Bell, MessageSquare } from "lucide-react";
+import Link from "next/link";
+import { UserDropdown } from "./UserDropdown";
+import { Tab } from "@/lib/constant";
 
-const tabs = [
-  { name: "Overview", href: "/dashboard" },
-  { name: "Live Location", href: "/dashboard/location", icon: MapPin },
-  { name: "Timeline", href: "/dashboard/timeline" },
-  { name: "Card View", href: "/dashboard/card" },
-  { name: "Compliance Status", href: "/dashboard/compliance" },
-  { name: "Site Attendance", href: "/dashboard/site" },
-];
 
-export function DashboardNav({ tabs, pathname }: { tabs: any[]; pathname: string }) {
+export function DashboardNav({ tabs, pathname }: { tabs: Tab[]; pathname: string }) {
   // const pathname = usePathname();
   const { user } = useAuth();
   const email = user?.email || 'siddharth.kliam@gmail.com';
-  const [isOpen, setIsOpen] = useState(false);
   const activeTab = tabs.find(tab => tab.href === pathname) || tabs[0];
 
   return (

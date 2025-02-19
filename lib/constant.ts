@@ -3,8 +3,16 @@ import { FileText } from "lucide-react";
 import { Clock } from "lucide-react";
 import { MapPin } from "lucide-react";
 import { LayoutGrid } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
-export const tabs = [
+export interface Tab {
+  id: number;
+  name: string;
+  href: string;
+  icon: LucideIcon;
+}
+
+export const tabs: Tab[] = [
     {
       id: 1,
       name: "Overview",

@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 

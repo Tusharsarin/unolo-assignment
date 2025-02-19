@@ -1,10 +1,10 @@
 "use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { useEffect, useState } from "react";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { CircleHelp } from "lucide-react";
+import { useEffect, useState } from "react";
 // // Initialize Highcharts modules
 // if (typeof window !== 'undefined') {
 //   require('highcharts/modules/exporting')(Highcharts);
