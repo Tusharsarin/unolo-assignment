@@ -1,15 +1,10 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { CardHeaderWithTooltip } from "@/components/ui/card-header-with-tooltip";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { CircleHelp } from "lucide-react";
 import { useEffect, useState } from "react";
-// // Initialize Highcharts modules
-// if (typeof window !== 'undefined') {
-//   require('highcharts/modules/exporting')(Highcharts);
-//   require('highcharts/highcharts-more')(Highcharts);
-// }
 
 export default function RealTimeStatus() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +39,7 @@ export default function RealTimeStatus() {
             fontWeight: 'bold',
             color: 'white'
           },
-          formatter: function(this: Highcharts.Point): string {
+          formatter: function (this: Highcharts.Point): string {
             return this.y?.toString() ?? '0';
           }
         }
@@ -75,9 +70,10 @@ export default function RealTimeStatus() {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="p-4 border-b border-gray-200">
-        <h2 className="text-sm font-semibold flex items-center gap-2">Real Time Status     <CircleHelp className="w-4 h-4" />        </h2>
-      </div>
+      <CardHeaderWithTooltip 
+        title="Real Time Status"
+        tooltip="Shows the current status of all employees - who is punched in and who is punched out"
+      />
       <div className="flex-1 p-4 flex items-center justify-center">
         <Card className="border-none shadow-none w-full">
           <CardContent>

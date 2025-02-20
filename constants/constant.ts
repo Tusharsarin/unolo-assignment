@@ -1,9 +1,4 @@
-import { Shield } from "lucide-react";
-import { FileText } from "lucide-react";
-import { Clock } from "lucide-react";
-import { MapPin } from "lucide-react";
-import { LayoutGrid } from "lucide-react";
-import { LucideIcon } from "lucide-react";
+import { Clock, FileText, LayoutGrid, LucideIcon, MapPin, Shield } from "lucide-react";
 
 export interface Tab {
   id: number;

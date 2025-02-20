@@ -10,7 +10,7 @@ import StatsCard from "@/components/dashboard/StatsCard";
 import TaskStatus from "@/components/dashboard/TaskStatus";
 import TeamwiseAttendance from "@/components/dashboard/TeamwiseAttendance";
 import WorkingHoursChart from "@/components/dashboard/WorkingHoursChart";
-import { tabs } from "@/lib/constant";
+import { tabs } from "@/constants/constant";
 import { ArrowDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -77,11 +77,12 @@ export default function DashboardPage() {
             value="0"
             change="0%"
             subtext="0 Yesterday"
+            positive
           />
           <StatsCard
             title="Photos Uploaded"
             value="5"
-            change="+400%"
+            change="400%"
             subtext="1 Yesterday"
             positive
           />
@@ -90,6 +91,7 @@ export default function DashboardPage() {
             value="0"
             change="0%"
             subtext="0 Yesterday"
+            positive
           />
           <StatsCard
             title="Orders Submitted"

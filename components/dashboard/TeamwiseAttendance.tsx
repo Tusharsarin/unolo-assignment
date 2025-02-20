@@ -1,3 +1,4 @@
+import { CardHeaderWithTooltip } from "@/components/ui/card-header-with-tooltip";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 export default function TeamwiseAttendance() {
@@ -9,9 +10,10 @@ export default function TeamwiseAttendance() {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex-none p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold">Teamwise Attendance</h2>
-      </div>
+      <CardHeaderWithTooltip 
+        title="Teamwise Attendance"
+        tooltip="Shows attendance breakdown by team"
+      />
       <div className="flex-1 p-6">
         <Table>
           <TableBody>

@@ -6,12 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tab } from "@/constants/constant";
 import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 import { Bell, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { UserDropdown } from "./UserDropdown";
-import { Tab } from "@/lib/constant";
 
 
 export function DashboardNav({ tabs, pathname }: { tabs: Tab[]; pathname: string }) {
