@@ -32,16 +32,18 @@ export default function EmployeesList() {
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
-      if (filter === "all") return matchesSearch;
-      if (filter === "new") {
-        // Example: Consider employees with recent activity as "new"
-        return (
-          matchesSearch &&
-          employee.lastSeen &&
-          employee.lastSeen.includes("hours ago")
-        );
+      switch (filter) {
+        case "all":
+          return matchesSearch;
+        case "punched_in":
+          return matchesSearch && employee.attendance.status === "punched_in";
+        case "punched_out":
+          return matchesSearch && employee.attendance.status === "punched_out";
+        case "not_yet":
+          return matchesSearch && employee.attendance.status === "never_marked";
+        default:
+          return matchesSearch;
       }
-      return matchesSearch;
     });
   }, [searchQuery, filter]);
 
@@ -77,18 +79,20 @@ export default function EmployeesList() {
         <div className="flex items-center gap-2">
           <Select
             defaultValue="all"
-            onValueChange={setFilter}
+            onValueChange={(value) => setFilter(value)}
           >
-            <SelectTrigger className="w-[100px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
-              <SelectValue placeholder="All" />
+            <SelectTrigger className="w-[130px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
+              <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All</SelectItem>
-              <SelectItem value="new">New</SelectItem>
+              <SelectItem value="punched_in">Punched In</SelectItem>
+              <SelectItem value="punched_out">Punched Out</SelectItem>
+              <SelectItem value="not_yet">Not Yet In</SelectItem>
             </SelectContent>
           </Select>
           <Input
-            placeholder="Search By Employee Name"
+            placeholder="Search Here"
             className="w-[200px] h-9 text-sm rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}

@@ -21,22 +21,20 @@ export default function OffDutyEmployees() {
 
   const filteredEmployees = useMemo(() => {
     return offDutyEmployees.filter((employee) => {
-      // First apply search filter
       const matchesSearch = 
         employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         employee.team.toLowerCase().includes(searchQuery.toLowerCase()) ||
         employee.status.toLowerCase().includes(searchQuery.toLowerCase());
 
-      // Then apply type filter
       switch (filter) {
         case "all":
           return matchesSearch;
-        case "new":
-          // Consider employees with "Sick Leave" or "Vacation" as new entries
-          return matchesSearch && (
-            employee.status === "Sick Leave" || 
-            employee.status === "Vacation"
-          );
+        case "weekly_off":
+          return matchesSearch && employee.status === "Weekly Off";
+        case "sick_leave":
+          return matchesSearch && employee.status === "Sick Leave";
+        case "vacation":
+          return matchesSearch && employee.status === "Vacation";
         default:
           return matchesSearch;
       }
@@ -54,16 +52,18 @@ export default function OffDutyEmployees() {
             defaultValue="all"
             onValueChange={setFilter}
           >
-            <SelectTrigger className="w-[100px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
-              <SelectValue placeholder="All" />
+            <SelectTrigger className="w-[130px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
+              <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All</SelectItem>
-              <SelectItem value="new">New</SelectItem>
+              <SelectItem value="weekly_off">Weekly Off</SelectItem>
+              <SelectItem value="sick_leave">Sick Leave</SelectItem>
+              <SelectItem value="vacation">Vacation</SelectItem>
             </SelectContent>
           </Select>
           <Input
-            placeholder="Search By Employee Name"
+            placeholder="Search Here"
             className="w-[200px] h-9 text-sm rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
