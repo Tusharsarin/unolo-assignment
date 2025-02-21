@@ -43,31 +43,33 @@ export default function OffDutyEmployees() {
 
   return (
     <Card className="border-none shadow-none">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b border-gray-200">
-        <CardTitle className="text-base font-semibold text-gray-900">
+      <CardHeader className="flex flex-col xl:flex-row items-start xl:items-center justify-between space-y-2 xl:space-y-0 pb-4 border-b border-gray-200">
+        <CardTitle className="text-base font-semibold text-gray-900 whitespace-nowrap">
           Off Duty Employees ({filteredEmployees.length})
         </CardTitle>
-        <div className="flex items-center gap-2">
-          <Select
-            defaultValue="all"
-            onValueChange={setFilter}
-          >
-            <SelectTrigger className="w-[130px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
-              <SelectValue placeholder="Select status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="weekly_off">Weekly Off</SelectItem>
-              <SelectItem value="sick_leave">Sick Leave</SelectItem>
-              <SelectItem value="vacation">Vacation</SelectItem>
-            </SelectContent>
-          </Select>
-          <Input
-            placeholder="Search Here"
-            className="w-[200px] h-9 text-sm rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <Select
+              defaultValue="all"
+              onValueChange={setFilter}
+            >
+              <SelectTrigger className="w-full sm:w-[130px] h-9 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white">
+                <SelectValue placeholder="Select status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="weekly_off">Weekly Off</SelectItem>
+                <SelectItem value="sick_leave">Sick Leave</SelectItem>
+                <SelectItem value="vacation">Vacation</SelectItem>
+              </SelectContent>
+            </Select>
+            <Input
+              placeholder="Search Here"
+              className="w-full sm:w-[200px] 2xl:w-[200px] xl:w-[150px] h-9 text-sm rounded-full focus:outline-none focus:ring-none focus-visible:ring-none focus:ring-white"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-2 pt-0 mt-2">
