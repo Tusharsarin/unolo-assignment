@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Design Documentation
 
-## Getting Started
+## Overview
+This document outlines the design decisions and implementation details for our Next.js dashboard application.
 
-First, run the development server:
+## Architecture Decisions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Technology Stack
+- **Next.js 14**: For server-side rendering and optimal performance
+- **TypeScript**: For type safety and better developer experience
+- **Tailwind CSS**: For utility-first styling and responsive design
+- **shadcn/ui**: For consistent, accessible UI components
+- **Highcharts**: For interactive data visualization
+
+### 2. Component Structure
+```
+components/
+├── dashboard/
+│   ├── EmployeesList.tsx       # Employee attendance tracking
+│   ├── OffDutyEmployees.tsx    # Off-duty employee management
+│   └── ExpenseOverview.tsx     # Expense visualization
+├── ui/                         # Reusable UI components
+└── layout/                     # Layout components
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Employee Management
+- Real-time attendance tracking
+- Status filtering (Punched In, Punched Out, Not Yet In)
+- Search functionality
+- Responsive table design
+- Empty state handling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Off-Duty Tracking
+- Status categorization (Weekly Off, Sick Leave, Vacation)
+- Team-based grouping
+- Search across multiple fields
+- Responsive design for all screen sizes
 
-## Learn More
+#### Expense Management
+- Interactive charts for expense visualization
+- Period-based filtering
+- Category breakdown
+- Status tracking (Pending, Approved, Rejected, Paid Out)
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Design Patterns
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### State Management
+- Local state using React hooks (useState, useMemo)
+- Optimized filtering and search logic
+- Memoized computations for performance
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Responsive Design
+- Mobile-first approach
+- Breakpoint system:
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+  - 2xl: 1536px
 
-## Deploy on Vercel
+#### Component Design
+- Modular and reusable components
+- Consistent props interface
+- Error boundary implementation
+- Loading state handling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. UI/UX Decisions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Layout
+- Clean, minimalist design
+- Fixed header with scrollable content
+- Responsive tables with horizontal scroll
+- Consistent spacing and alignment
+
+#### Typography
+- Clear hierarchy
+- Font: System default/Geist
+- Consistent text sizes and weights
+
+#### Colors
+- Primary: Blue (#3b82f6)
+- Success: Green (#22c55e)
+- Warning: Orange (#f97316)
+- Error: Red (#ef4444)
+- Neutral grays for text and borders
+
+#### Interactive Elements
+- Hover states for better feedback
+- Focus states for accessibility
+- Loading indicators
+- Empty state messaging
+
+### 6. Performance Considerations
+
+#### Optimization
+- Component memoization
+- Efficient filtering algorithms
+- Lazy loading where appropriate
+- Image optimization
+
+#### Data Management
+- Client-side filtering
+- Memoized search results
+- Efficient state updates
+
+### 7. Accessibility
+
+#### Features
+- ARIA labels
+- Keyboard navigation
+- Focus management
+- Screen reader support
+
+#### Components
+- Semantic HTML
+- Color contrast compliance
+- Interactive element sizing
+
+### 8. Future Improvements
+
+#### Potential Enhancements
+- Real-time updates
+- Advanced filtering options
+- Export functionality
+- Batch actions
+- More detailed analytics
+
+#### Scalability
+- Code splitting
+- Performance monitoring
+- Enhanced error handling
+- Expanded test coverage
+
+## Implementation Details
+
+### Key Components
+
+#### EmployeesList
+```typescript
+// Core features
+- Real-time attendance tracking
+- Status filtering
+- Search functionality
+- Responsive table
+```
+
+#### OffDutyEmployees
+```typescript
+// Core features
+- Status management
+- Team tracking
+- Search capabilities
+- Responsive design
+```
+
+#### ExpenseOverview
+```typescript
+// Core features
+- Chart visualization
+- Period filtering
+- Category breakdown
+- Status tracking
+```
+
+### Best Practices
+
+#### Code Organization
+- Consistent file naming
+- Clear component hierarchy
+- Modular structure
+- Type definitions
+
+#### Performance
+- Optimized renders
+- Efficient data handling
+- Responsive design
+- Loading states
+
+#### Maintenance
+- Clear documentation
+- Type safety
+- Error handling
+- Consistent styling
+```
+
+This documentation provides a comprehensive overview of your project's design decisions and implementation details. Would you like me to expand on any particular section or add more specific details?
